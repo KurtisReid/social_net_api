@@ -17,22 +17,21 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
+var school_name = "Kent State University at Kent";
+var API_KEY = require('./API_KEY').api_key;//acess api_key stored on another file
+
 //Takes json document, finds part spific to school, returns parsed json that contains nescciary information
 var find_school = function(school_name, input_doc) {
   var parsed_document;
-  //var str_doc;
-  //str_doc = JSON.stringify(input_doc);//converts document to a string
   parsed_document = JSON.parse(input_doc);//parsing the json document
-  var school_data = parsed_document.results[1]['school.name'];
-  console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
-  console.log(school_data);
 
-  var i = 0;
+  var i = 0;//counter
   while (parsed_document.results[i]['school.name'] != school_name) {
     i++;
   }
   console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
   console.log(parsed_document.results[i]);
+  return parsed_document.results[i];
 
 /*  var arrayFound = parsed_document.results.filter(function() {
     return this['school.name'] == school_name;
@@ -43,12 +42,12 @@ console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
 
 
 //Gets school information
-https.get('https://api.data.gov/ed/collegescorecard/v1/schools.json?api_key=INSERT_API_KEY&school.name=kent+State&_zip=44240&_fields=school.name%2Cschool.tuition_revenue_per_fte,school.zip', (res) => {
+https.get('https://api.data.gov/ed/collegescorecard/v1/schools.json?api_key='+API_KEY+'&school.name=kent+State&_zip=44240&_fields=school.name%2Cschool.tuition_revenue_per_fte,school.zip', (res) => {
   console.log(`Got response: ${res.statusCode}`);
   // consume response body
   res.on('data', (d) => {
       process.stdout.write(d);
-      fs.writeFile('test.json', find_school("Kent State University at Kent", d.toString()), function (err) {
+      fs.writeFile('test.json', find_school("Kent State University at Kent", d.toString()).toString(), function (err) {
       if (err) return console.log(err);
         console.log('write successful');
       });
