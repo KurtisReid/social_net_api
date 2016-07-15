@@ -1,11 +1,11 @@
 var express = require('express');
 var app = express();
 var fs = require("fs");
-var FB = require('fb');//Facebook sdk
+//var FB = require('fb');//Facebook sdk
 //var MongoClient = require('mongodb').MongoClient;
 //var ObjectID = require('mongodb').ObjectID;//objectID object
 var assert = require('assert');
-
+var https = require("https");
 //var collect = "isThisReal";//This is the name of the collection in the database where the information will be stored
 
 //var url = 'mongodb://localhost:27017/LFST';//this is the URL specifiying the port to connect to the database
@@ -17,6 +17,23 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
+https.get('https://api.data.gov/ed/collegescorecard/v1/schools.json?api_key=INSERT_API_KEY&school.name=kent+State&_zip=44240&_fields=school.name%2Cschool.tuition_revenue_per_fte,school.zip', (res) => {
+  console.log(`Got response: ${res.statusCode}`);
+  // consume response body
+  res.on('data', (d) => {
+      process.stdout.write(d);
+      fs.writeFile('test.json', JSON.stringify(), function (err) {
+      if (err) return console.log(err);
+        console.log('write successful');
+      });
+
+    });
+
+  res.resume();
+}).on('error', (e) => {
+  console.log(`Got error: ${e.message}`);
+});
+/*
 FB.api('/893535150657056','GET',{"fields":"id,name,education,location,friends{name,education}"},
   function(response) {
     console.log(JSON.stringify(response));
@@ -26,7 +43,7 @@ FB.api('/893535150657056','GET',{"fields":"id,name,education,location,friends{na
     });
   }
 );
-
+*/
 //fs.writeFile('test.json', JSON.stringify(obj), function (err) {
 //if (err) return console.log(err);
 //  console.log('Delete sucessfull');
