@@ -22,7 +22,7 @@ https.get('https://api.data.gov/ed/collegescorecard/v1/schools.json?api_key=INSE
   // consume response body
   res.on('data', (d) => {
       process.stdout.write(d);
-      fs.writeFile('test.json', JSON.stringify(), function (err) {
+      fs.writeFile('test.json', d.toString(), function (err) {
       if (err) return console.log(err);
         console.log('write successful');
       });
