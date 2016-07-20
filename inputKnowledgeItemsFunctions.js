@@ -15,7 +15,7 @@ var year = "2013";
 
 var modify_inputKnowledgeItems_prefs = function (loc_state, student_status, career_field, desired_degree_level, current_degree_level, tuition_cost_ceiling)
 {
-var list;
+  var list;
   list = find_in_state_colleges(loc_state, career_field);// returns a list of institutions in the state
   list = check_for_accrediation(list);// checks for properly acredditted institutions, returns modified list of acreddited universities
   list = check_tution(list, tuition_cost_ceiling);// checks institutions tuition cost against tuition_cost_ceiling, returns list of institutions under ceiling
@@ -43,7 +43,7 @@ var check_for_accrediation = function (data)
   // write good institutions to new json structure
 
 
-  // check tution costs
+  //return json structure 
 
 
 
@@ -59,13 +59,17 @@ var find_in_state_colleges = function(state_desired, career_field)
 }
 
 
-//year + ".cost.attendance.academic_year__range=.." + tuition_cost_ceiling
 
-var check_tution = function (list, tuition_cost_ceiling) {
+
+var check_tution = function (list, tuition_cost_ceiling)
+{
   //// checks institutions tuition cost against tuition_cost_ceiling, returns list of institutions under ceiling
   //loop through list
 
       //check if tution is below ceiling
+      // if (tution < tuition_cost_ceiling || tution = tuition_cost_ceiling) add to list
+
+  //return mondified list
 }
 
 
@@ -90,5 +94,3 @@ var get_info_from_api = function (url, callback)// sends GET request to server, 
     console.log(`Got error: ${e.message}`);
   });
 }
-
-find_in_state_colleges("OH", 0);
