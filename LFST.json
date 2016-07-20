@@ -1,0 +1,63 @@
+{
+	"_id": "001",
+	"inputKnowledgeItems":[
+		{
+			"desiredLocation": "OH",
+			"fullTime": "yes",
+			"desiredCareerField": "information technology",
+			"desiredDegreeLevel": "Bachelor of Science",
+			"currentDegreeLevel": "HS",
+			"tuitionCostCeiling": "15000"
+		},
+			{
+				"AccountType": "facebook",
+				"apikey": "123"
+			}
+		],
+		"OutputKnowledgeItems":[
+			{
+				"type" : "event",
+				"effectOnDistance": "1",
+				"what" : "Hackathon",
+				"when" : "October 18",
+				"where" : "Kent State Library",
+				"contributes" : "learning Skill"
+			},
+			{
+				"type" : "coarse",
+				"effectOnDistance": "3",
+				"title" : "Introduction to computer science",
+				"when" : "january 9th - june 17",
+				"institution" : "Kent State University",
+				"where" : "Kent State computer science building",
+				"contributes" : "required course"
+			}
+		],
+		"learningState" : [
+			{
+				"learningGoal" : {
+					"id" : "0",
+					"distenceToLearningGoal": "20"
+				}
+			}
+		],
+		"stateTransition" : [
+			{
+				"id" : 0,
+				"cause": "location changed",
+				"distenceToLearningGoal" : "20"
+			},
+			{
+				"id" : 1,
+				"cause": "finished coarse",
+				"distenceToLearningGoal" : "19"
+			}
+		],
+		"outputReccomendations" : [
+			{
+				"reccomendationID" : "1",
+				"causedBy" : "stateTransition",
+				"progressesTwoards": "learningGoal1"
+		}
+	]
+}
