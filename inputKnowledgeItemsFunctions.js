@@ -22,7 +22,7 @@ var modify_inputKnowledgeItems_prefs = function (loc_state, student_status, care
 
 
 
-
+  //show_list_of_colleges(list);//returns list of colleges
 }
 
 var check_for_accrediation = function (data)
@@ -36,14 +36,19 @@ var check_for_accrediation = function (data)
   // 3 = for profit
 
   //parse json data
-
+  var parsed_document;
+  parsed_document = JSON.parse(data);//parsing the json document
 
   //check for bad accreditors
+  for (var i = 0; i < parsed_document.results.length; i++)
+  {
+    if(parsed_document.results[i]['school.accreditor'] != "Accrediting Council for Independent Colleges and Schools")
+    {
+      //add institutions to new json structure
+    }
+  }
 
-  // write good institutions to new json structure
-
-
-  //return json structure 
+  //return json structure
 
 
 
