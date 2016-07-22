@@ -1,0 +1,25 @@
+{"LearningStates": [
+  {
+    state_id: #,
+    state_type: ,
+    state_specification: ,
+    Learning_Goal: ,
+    distenceToLearningGoal: ,
+    sub_learning_goals: [
+      {
+        state_id: #,
+        state_type: ,
+        Learning_Goal: ,
+        distenceToLearningGoal: ,
+      },
+      {
+        state_id: #,
+        state_type: ,
+        Learning_Goal: ,
+        distenceToLearningGoal: ,
+      },
+    ],
+
+  }
+]
+}
