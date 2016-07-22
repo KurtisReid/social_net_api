@@ -4,4 +4,6 @@ A small program that will mine data from facebook, and modify a the input knowle
 Working   | Yes |
 --------- | ------
 
+Please see the documentation in the [wiki](https://github.com/KurtisReid/social_net_api/wiki)
+
 
