@@ -102,27 +102,37 @@ var check_for_accrediation = function (data, callback)
   var parsed_document;
   parsed_document = JSON.parse(data);//parsing the json document
   console.log("?????????????????????????? check_for_accrediation ??????????????????");
-  console.log(data);
+  //console.log(data);
 
 
   var accredited_institutions = {schools: [
 
   ]};
   var count = 0;
-console.log("????????????????????????????????")
-  console.log(parsed_document.results);
+
+  //console.log(parsed_document.results);
 
   //check for bad accreditors
-  for (var i = 0; i < parsed_document.results; i++)
-  {
-    if(parsed_document.results[i]['school.accreditor'] != "Accrediting Council for Independent Colleges and Schools")
-    {
-      //add institutions to new json structure
-      accredited_institutions.schools.push(parsed_document.results[i]);
+  var key, count = 0;
+  for(key in parsed_document.results) {
+    if(parsed_document.results.hasOwnProperty(key)) {
+      if(parsed_document.results[count]['school.accreditor'] != "Accrediting Council for Independent Colleges and Schools")
+      {
+        //add institutions to new json structure
+        accredited_institutions.schools.push(parsed_document.results[count]);
+        //console.log("????????????????????????????????")
+        console.log(parsed_document.results[count]);
 
 
+      }
+      count++;
     }
+
+
   }
+
+console.log("????????????????????????????????")
+  console.log(accredited_institutions.schools);
 
   //return json structure
 
