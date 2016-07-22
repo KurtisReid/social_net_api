@@ -10,5 +10,4 @@ This API uses the following things:
 * express framework
   * `npm install express --save`
 * `npm install body-parser`
-* Facebook apk
-  * `npm install fb`
+
