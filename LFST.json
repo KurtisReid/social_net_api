@@ -3,12 +3,18 @@
 	"inputKnowledgeItems":[
 		{
 			"desiredLocation": "OH",
-			"fullTime": "yes",
+			"studentStatus": "full time",
 			"desiredCareerField": "information technology",
 			"desiredDegreeLevel": "Bachelor of Science",
 			"currentDegreeLevel": "HS",
 			"tuitionCostCeiling": "15000"
 		},
+		{
+			"school_name": "Kent State University at Stark",
+			"tuitionCost": "00000",
+			"state": "OH",
+			"zip": "44720"
+		}
 			{
 				"AccountType": "facebook",
 				"apikey": "123"
@@ -37,6 +43,8 @@
 			{
 				"learningGoal" : {
 					"id" : "0",
+					"desiredCareerField": "computers",
+					"desiredDegreeLevel": "Bachelor of Science",
 					"distenceToLearningGoal": "20"
 				}
 			}
@@ -45,11 +53,13 @@
 			{
 				"id" : 0,
 				"cause": "location changed",
+				"stateAffected": 25,
 				"distenceToLearningGoal" : "20"
 			},
 			{
 				"id" : 1,
 				"cause": "finished coarse",
+				"stateAffected": 25,
 				"distenceToLearningGoal" : "19"
 			}
 		],
