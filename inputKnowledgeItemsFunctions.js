@@ -79,6 +79,10 @@ var get_info_from_api = function (url, callback)// sends GET request to server, 
            console.log("accreddited colleges");
            console.log(ret_json_file);
            console.log("///////////////////////////list//////////////////");
+
+callback(null, ret_json_file);
+
+
          });// checks for properly acredditted institutions, returns modified list of acreddited universities
       });
     }).on('error', function(e) {
@@ -86,17 +90,20 @@ var get_info_from_api = function (url, callback)// sends GET request to server, 
     });
 
 
+
+
 }
 
 var check_for_accrediation = function (data, callback)
 {
-  //keyword for api call: school.accreditor
+  /*keyword for api call: school.accreditor
   //bad colleges
   //Accrediting Council for Independent Colleges and Schools
 
   //check ownership
   //"school.ownership"
   // 3 = for profit
+  */
 
   //parse json data
   var parsed_document;
@@ -115,13 +122,13 @@ var check_for_accrediation = function (data, callback)
   //check for bad accreditors
   var key, count = 0;
   for(key in parsed_document.results) {
-    if(parsed_document.results.hasOwnProperty(key)) {
+    if(parsed_document.results.hasOwnProperty(key)) {//checks for end of docuement
       if(parsed_document.results[count]['school.accreditor'] != "Accrediting Council for Independent Colleges and Schools")
       {
         //add institutions to new json structure
         accredited_institutions.schools.push(parsed_document.results[count]);
-        //console.log("????????????????????????????????")
-        console.log(parsed_document.results[count]);
+
+        //console.log(parsed_document.results[count]);
 
 
       }
@@ -131,7 +138,7 @@ var check_for_accrediation = function (data, callback)
 
   }
 
-console.log("????????????????????????????????")
+
   console.log(accredited_institutions.schools);
 
   //return json structure
@@ -155,15 +162,19 @@ var find_in_state_colleges = function(state_desired, career_field, tuition_cost_
   var url = "&school.state=" + state_desired + "&_fields=school.name%2Cschool.tuition_revenue_per_fte,school.zip," + year + ".academics.program_percentage." + Careers[career_field]+ "," + year + ".cost.attendance.academic_year" + ",school.accreditor,school.ownership";
   var data;
   get_info_from_api(url, function (err, ret_data) {
+    console.log("?????????????????????????? find_in_state_colleges ????????????");
     if (err) throw err;
     console.log(ret_data);
     data = ret_data;
-  });
-console.log("///////////////////////////////////////////////////////////")
 
-  console.log(data);
-console.log("///////////////////////////////////////////////////////////")
-  callback(data);
+    console.log("??????????????????????????");
+  console.log("///////////////////////////////////////////////////////////")
+
+    console.log(data);
+  console.log("///////////////////////////////////////////////////////////")
+    callback(null, data);
+  });
+
 
 
 }
