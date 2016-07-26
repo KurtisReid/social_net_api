@@ -39,6 +39,7 @@ funct(small_classes, function (err, json) {
     console.log("hello from the callllbackkkkkkkkkkkkkkkkkkkk");
     var parsed_doc = JSON.parse(json);
     console.log(parsed_doc.Campus);
+    console.log(parsed_doc.Courses[0]);
 
 
 
