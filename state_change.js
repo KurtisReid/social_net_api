@@ -31,13 +31,31 @@ var randomstring = require("randomstring");//generates random strings
   TODO: (later) switch from hashtable to database
 */
 
-var learning_states_hash_table = new HashTable();
+var learning_states_hash_table = new HashTable();// hash table in which the states will be stored in
 
-//learning_states_hash_table.put('key', {value: 'value'});
+//learning_states_hash_table.put('0', {"inputKnowledgeItemsID": 0000,"learningStateID": 0000,"OutputKnowledgeItemsID": 0000});
 
 //console.log(learning_states_hash_table.get('key'));
 
+//learning_states_hash_table.put('1', {"inputKnowledgeItemsID": 1111,"learningStateID": 1111,"OutputKnowledgeItemsID": 1111});
+//learning_states_hash_table.put('2', {"inputKnowledgeItemsID": 2222,"learningStateID": 2222,"OutputKnowledgeItemsID": 2222});
+//console.log(learning_states_hash_table.get('1'));
 
+//console.log(learning_states_hash_table.keys());
+
+var print_whole_table = function () {
+  //prints whole hash table
+  var arr = learning_states_hash_table.keys();
+
+  console.log('For loop');
+  for(var i = 0; i < arr.length; i++)
+  {
+    console.log(arr[i]);
+    console.log(learning_states_hash_table.get(arr[i]));
+  }
+
+
+}//end print_whole_table
 
 
 
@@ -45,6 +63,7 @@ var learning_states_hash_table = new HashTable();
 
 
 var get_new_state_transition = function (data, callback) {
+  console.log("get_new_state_transition started");
 
   var new_state_transition = {
     "inputKnowledgeItemsID": null,//inputKnowledgeItems
@@ -63,18 +82,22 @@ var get_new_state_transition = function (data, callback) {
 
 
 
-  get_derived_knowledge_ID(data, function (err, id, catagory) {
+  get_derived_knowledge_ID(data, function (err, id, category) {
     if (err) throw err;
     new_state_transition.derivedKnowledgeID = id;
+    console.log("derivedKnowledgeID: " + id);
 
 
-    get_learning_state_ID (category, function (err, oid) {
+    get_learning_state_ID (category, function (err, lid) {
       if (err) throw err;
-      new_state_transition.learningStateID = oid;
+      new_state_transition.learningStateID = lid;
+      console.log("learningStateID: " + lid);
 
       get_output_knowledge_item_ID (category, function (err, oid) {
         if (err) throw err;
-        new_state_transition.learningStateID = oid;
+        new_state_transition.OutputKnowledgeItemsID = oid;
+        console.log("OutputKnowledgeItemsID: " + oid);
+
 
 
 
@@ -83,22 +106,39 @@ var get_new_state_transition = function (data, callback) {
     });//end get_learning_state_ID
   });//end get_derived_knowledge_ID
 
+  //console.log()
 
+  console.log("Key: " + key);
+  console.log("derivedKnowledgeID: " + new_state_transition.derivedKnowledgeID);
+  console.log("learningStateID: " + new_state_transition.learningStateID);
+  console.log("OutputKnowledgeItemsID: " + new_state_transition.OutputKnowledgeItemsID);
+
+
+
+
+  callback(null, key, new_state_transition);
 };//end get_new_state_transition
 
 var get_new_key = function (callback) {
+  console.log("get_new_key started");
   var key;
   var is_in = true;
+  key = randomstring.generate(7);
+  /*
   while (is_in = true)
   {
+    console.log("while");
     //generate a ramdom string of numbers for the key
     key = randomstring.generate(7);
+    console.log(key);
 
-    //is_in = learning_states_hash_table.has(key);
+    is_in != learning_states_hash_table.has(key);
 
 
     //check if string is already used
-    if (learning_states_hash_table.has(key))
+
+/*
+    if ( = false)
     {
       console.log(key + " is already in hashtable");
     }
@@ -108,15 +148,15 @@ var get_new_key = function (callback) {
     }
 
     //if string is already used, generates a new string
-  }
+  }*/
 
   callback(null, key);
 
 }//end of get_new_key
 
 var get_derived_knowledge_ID = function (data, callback) {
-  var id;
-  var cat;
+  var id = "test";
+  var cat = "cat_test";
 
   //get id and catagory information from data
 
@@ -126,7 +166,7 @@ var get_derived_knowledge_ID = function (data, callback) {
 }
 
 var get_learning_state_ID = function (category, callback) {
-  var id;
+  var id = "LS_TEST";
 
 
   //get id based on the category catagory information from data
@@ -138,8 +178,23 @@ var get_learning_state_ID = function (category, callback) {
 }
 
 var get_output_knowledge_item_ID = function (data, callback) {
-  var temp_ID = 0000;//test id
+  var temp_ID = "OUT_TEST";//test id
 
 
   callback(null, temp_ID);
-}
+};
+
+
+
+
+//////////////////////////////////// calls
+
+get_new_state_transition("data", function (err, key, state_transition_obj) {
+  if (err) throw err;
+  learning_states_hash_table.put(key, state_transition_obj);//inserting into hashtable
+  print_whole_table();
+
+
+});//end get_new_state_transition call
+
+//print_whole_table();
