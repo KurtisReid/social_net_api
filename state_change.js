@@ -8,6 +8,13 @@ var assert = require('assert');
 var https = require("https");
 var API_KEY = require('./API_KEY').api_key;//acess api_key stored on another file
 
+var HashTable = require('hashtable');
+var hashtable = new HashTable();
+
+hashtable.put('key', {value: 'value'});
+
+console.log(hashtable.get('key'));
+
 
 
 
@@ -27,6 +34,14 @@ var new_state_transition = {
   "learningStateID": null,
   "OutputKnowledgeItemsID": null
 };
+
+
+//add state hashtable
+/*
+  TODO: (later) switch from hashtable to database
+*/
+
+var learning_states_hash_table;
 
 
 
