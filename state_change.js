@@ -33,15 +33,6 @@ var randomstring = require("randomstring");//generates random strings
 
 var learning_states_hash_table = new HashTable();// hash table in which the states will be stored in
 
-//learning_states_hash_table.put('0', {"inputKnowledgeItemsID": 0000,"learningStateID": 0000,"OutputKnowledgeItemsID": 0000});
-
-//console.log(learning_states_hash_table.get('key'));
-
-//learning_states_hash_table.put('1', {"inputKnowledgeItemsID": 1111,"learningStateID": 1111,"OutputKnowledgeItemsID": 1111});
-//learning_states_hash_table.put('2', {"inputKnowledgeItemsID": 2222,"learningStateID": 2222,"OutputKnowledgeItemsID": 2222});
-//console.log(learning_states_hash_table.get('1'));
-
-//console.log(learning_states_hash_table.keys());
 
 var print_whole_table = function () {
   //prints whole hash table
@@ -163,7 +154,7 @@ var get_derived_knowledge_ID = function (data, callback) {
 
   callback(null, id, cat);
 
-}
+}//end of get_derived_knowledge_ID
 
 var get_learning_state_ID = function (category, callback) {
   var id = "LS_TEST";
@@ -175,19 +166,19 @@ var get_learning_state_ID = function (category, callback) {
   callback(null, id);
 
 
-}
+}//end of get_learning_state_ID
 
 var get_output_knowledge_item_ID = function (data, callback) {
   var temp_ID = "OUT_TEST";//test id
 
 
   callback(null, temp_ID);
-};
+};//end of get_output_knowledge_item_ID
 
 
 
 
-//////////////////////////////////// calls
+//////////////////////////////////// test calls
 
 get_new_state_transition("data", function (err, key, state_transition_obj) {
   if (err) throw err;
