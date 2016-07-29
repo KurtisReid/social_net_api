@@ -48,6 +48,21 @@ var print_whole_table = function () {
 
 }//end print_whole_table
 
+var add_new_state = function (new_state_transition, new_state_transition_key, current_state_key, learning_states_hash_table, callback) {
+  //gets current state
+  var current_state = learning_states_hash_table.get(current_state_key);
+
+  //have current state point to new state key
+  current_state.learningStateID = new_state_transition_key;
+
+  //put current state back into hashtable
+  learning_states_hash_table.put(current_state_key, current_state);
+
+  //returns learning_states_hash_table
+  callback(null, learning_states_hash_table);
+
+}//end of add_new_state
+
 
 
 
