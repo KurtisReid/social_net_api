@@ -54,18 +54,30 @@ module.exports =
 
 
   // call that starts the process of the functions on this page
-  var doc_call = function (current_state_key, reccomendation_obj, callback, learning_states_hash_table) {
+  var doc_call = function (reccomendation_obj, learning_states_hash_table, callback) {
     //var temp_hash_table;
     get_new_state_transition("data", function (err, key, state_transition_obj) {
       if (err) throw err;
       //learning_states_hash_table.put(key, state_transition_obj);//inserting into hashtable
 
-      add_new_state(state_transition_obj, key, current_state_key, learning_states_hash_table, function (err, learning_states_hash_table)
-      {
-        //temp_hash_table = learning_states_hash_table;
-        print_whole_table();
-        callback(null, learning_states_hash_table);
-      });//end add_new_state function call
+      get_current_state_key(function (err, current_state_key) {
+
+        add_new_state(state_transition_obj, key, current_state_key, learning_states_hash_table, function (err, learning_states_hash_table)
+        {
+          //temp_hash_table = learning_states_hash_table;
+
+          console.log("current_key: " + current_key);
+          //setting a the new key as the last key
+          current_key.current_key.last_key = key;
+
+          console.log("current_key: " + current_key);
+          print_whole_table();
+          callback(null, learning_states_hash_table);
+        });//end add_new_state function call
+
+      });//end get_current_state_key function call
+
+
 
 
     });//end get_new_state_transition call
