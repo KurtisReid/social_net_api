@@ -29,13 +29,15 @@ input_hash_table.put(inputID, "inputKnowledgeItem 1");
 
 
 
-
-var rec_obj = recomendation.set_reccomendation_obj(outputID, inputID, function (err, rec_obj){
+var rec_obj;
+recomendation.set_reccomendation_obj(outputID, inputID, function (err, rec_object){
   if (err) throw err;
+  console.log("rec_object: " + rec_object);
 
   //create reccomendation
-  recomendation.set_recc_as_learning_state(rec_obj, function (err) {
+  recomendation.set_recc_as_learning_state(rec_object, function (err) {
     if (err) throw err;
+    rec_obj = rec_object;
   });//end of set_recc_as_learning_state function call
 });//end of set_reccomendation_obj function call
 
