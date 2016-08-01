@@ -15,7 +15,7 @@ module.exports =
 {
 
   //makes recommendation object by mapping OutputKnowledgeItemsID and inputKnowledgeItemsID
-  var set_reccomendation_obj = function (outputID, inputID, callback)
+  set_reccomendation_obj : function (outputID, inputID, callback)
   {
     var rec_obj = {
     "OutputKnowledgeItemsID": null,
@@ -25,10 +25,11 @@ module.exports =
     rec_obj.inputKnowledgeItemsID = inputID;
 
     callback(null, rec_obj);//returns rec_obj
-  };//end of set_reccomendation_obj
+  },//end of set_reccomendation_obj
 
-  var set_recc_as_learning_state = function (reccomendation_obj, callback)
+  set_recc_as_learning_state : function (reccomendation_obj, callback)
   {
+    console.log("set_recc_as_learning_state");
 
     doc_call(reccomendation_obj, learning_states_hash_table, function (err, ls_hash_table)
     {
@@ -40,7 +41,7 @@ module.exports =
 
     callback(null);
 
-  };//end of set_recc_as_learning_state
+  }//end of set_recc_as_learning_state
 
 
 
