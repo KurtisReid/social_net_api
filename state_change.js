@@ -48,7 +48,7 @@ module.exports = {
     }
 
 
-  }//end print_whole_table
+  },//end print_whole_table
 
 
 
@@ -73,15 +73,15 @@ module.exports = {
           console.log("current_key: " + current_key);
           print_whole_table();
           callback(null, learning_states_hash_table);
-        });//end add_new_state function call
+        })//end add_new_state function call
 
-      });//end get_current_state_key function call
-
-
+      })//end get_current_state_key function call
 
 
-    });//end get_new_state_transition call
-  }//end doc_call
+
+
+    })//end get_new_state_transition call
+  },//end doc_call
 
   /*
     Prerequisite: hashtable objects must have learningStateID
@@ -112,12 +112,12 @@ module.exports = {
     //returns learning_states_hash_table
     callback(null, learning_states_hash_table);
 
-  }//end of add_new_state
+  },//end of add_new_state
 
 
 
 
-  var get_current_state_key = function (callback)
+  get_current_state_key : function (callback)
   {
     // gets last key from database (not yet implimented)
     if (current_key == 'null')
@@ -126,14 +126,14 @@ module.exports = {
       callback("current_key is null", "null");
     }
     callback(null, current_key);
-  }
+  },
 
 
 
 
 
 
-  var get_new_state_transition = function (data, callback) {
+  get_new_state_transition : function (data, callback) {
     console.log("get_new_state_transition started");
 
     var new_state_transition = {
@@ -191,9 +191,9 @@ module.exports = {
 
 
     callback(null, key, new_state_transition);
-  };//end get_new_state_transition
+  },//end get_new_state_transition
 
-  var get_new_key = function (callback) {
+  get_new_key : function (callback) {
     console.log("get_new_key started");
     var key;
     var is_in = true;
@@ -226,9 +226,9 @@ module.exports = {
 
     callback(null, key);
 
-  }//end of get_new_key
+  },//end of get_new_key
 
-  var get_derived_knowledge_ID = function (data, callback) {
+  get_derived_knowledge_ID : function (data, callback) {
     var id = "test";
     var cat = "cat_test";
 
@@ -237,9 +237,9 @@ module.exports = {
 
     callback(null, id, cat);
 
-  }//end of get_derived_knowledge_ID
+  },//end of get_derived_knowledge_ID
 
-  var get_learning_state_ID = function (category, callback) {
+  get_learning_state_ID : function (category, callback) {
     var id = "null"; //assumes that this learning state is the newest learning state
 
 
@@ -249,14 +249,14 @@ module.exports = {
     callback(null, id);
 
 
-  }//end of get_learning_state_ID
+  },//end of get_learning_state_ID
 
-  var get_output_knowledge_item_ID = function (data, callback) {
+  get_output_knowledge_item_ID : function (data, callback) {
     var temp_ID = "OUT_TEST";//test id
 
 
     callback(null, temp_ID);
-  };//end of get_output_knowledge_item_ID
+  },//end of get_output_knowledge_item_ID
 
 
 
