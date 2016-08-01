@@ -8,6 +8,7 @@ var assert = require('assert');
 var https = require("https");
 var API_KEY = require('./API_KEY').api_key;//acess api_key stored on another file
 var current_key = require('./current_key').last_key;//key of the last learning state
+var learning_states_hash_table = require('./learning_states_hashtable').learning_states_hash_table;
 
 var HashTable = require('hashtable');// hashtable to orginize states
 var randomstring = require("randomstring");//generates random strings

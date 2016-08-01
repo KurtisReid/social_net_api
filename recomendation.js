@@ -48,9 +48,9 @@ module.exports =
           current_key.current_key = key;
 
           console.log("current_key: " + current_key);
-          print_whole_table();
+          state_change.print_whole_table();
 
-          learning_states_hash_table.learning_states_hashtable.learning_states_hash_table = ls_hash_table;
+          learning_states_hash_table.learning_states_hashtable = ls_hash_table;
           //callback(null, learning_states_hash_table);
         })//end add_new_state function call
 
