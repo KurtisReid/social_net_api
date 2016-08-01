@@ -32,7 +32,7 @@ module.exports =
   {
     console.log("set_recc_as_learning_state");
 
-    state_change.get_new_state_transition("data", function (err, key, state_transition_obj) {
+    state_change.get_new_state_transition(reccomendation_obj, function (err, key, state_transition_obj) {
       if (err) throw err;
       //learning_states_hash_table.put(key, state_transition_obj);//inserting into hashtable
 

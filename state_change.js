@@ -9,7 +9,7 @@ var https = require("https");
 var API_KEY = require('./API_KEY').api_key;//acess api_key stored on another file
 var current_key = require('./current_key').last_key;//key of the last learning state
 var learning_states_hash_table = require('./learning_states_hashtable').learning_states_hash_table;
-
+var get_ls_hash_table = require('./learning_states_hashtable').make_new_hash_table;
 var HashTable = require('hashtable');// hashtable to orginize states
 var randomstring = require("randomstring");//generates random strings
 
@@ -68,9 +68,28 @@ module.exports = {
 
   add_new_state : function (new_state_transition, new_state_transition_key, current_state_key, learning_states_hash_table, callback) {
     //gets current state
-    var current_state = learning_states_hash_table.get(current_state_key);
+    console.log("add_new_state");
+      var current_state;
+
+      if (learning_states_hash_table.get(current_state_key) == undefined)
+      {
+        console.log("current_state is undefined");
+        get_ls_hash_table(function (err, learning_states_hash_table) {
+            if (err) throw err;
+            current_state = learning_states_hash_table.get(current_state_key);
+            console.log("current_state: " + current_state);
+        });//end get_ls_hash_table function call
+
+
+      }
+
+      console.log("current_state: " + current_state);
+
+
 
     //have current state point to new state key
+
+
     try
     {
       current_state.learningStateID = new_state_transition_key;
@@ -95,6 +114,7 @@ module.exports = {
 
   get_current_state_key : function (callback)
   {
+    console.log("get_current_state_key");
     // gets last key from database (not yet implimented)
     if (current_key == 'null')
     {
@@ -144,7 +164,7 @@ module.exports = {
 
 
   get_new_state_transition : function (data, callback) {
-    console.log("get_new_state_transition started");
+    console.log("get_new_state_transition(" + data + ")");
 
     var new_state_transition = {
       "inputKnowledgeItemsID": null,//inputKnowledgeItems
@@ -197,7 +217,7 @@ module.exports = {
     //console.log()
 
     console.log("Key: " + key);
-    console.log("derivedKnowledgeID: " + new_state_transition.derivedKnowledgeID);
+    console.log("derivedKnowledgeID: " + new_state_transition.inputKnowledgeItemsID);
     console.log("learningStateID: " + new_state_transition.learningStateID);
     console.log("OutputKnowledgeItemsID: " + new_state_transition.OutputKnowledgeItemsID);
 
