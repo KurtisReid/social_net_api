@@ -51,6 +51,12 @@ module.exports =
           state_change.print_whole_table();
 
           learning_states_hash_table.learning_states_hashtable = ls_hash_table;
+
+          console.log("///////////////////////// learning_states_hash_table.learning_states_hashtable /////////////// ");
+          console.log(learning_states_hash_table.learning_states_hashtable);
+          console.log("///////////////////////// ||||||||||||||||||||||||||||||||||||||||||||||||||||");
+          console.log(ls_hash_table);
+          console.log("|||||||||||||||||||||||||||||||||||||||||");
           //callback(null, learning_states_hash_table);
         })//end add_new_state function call
 
