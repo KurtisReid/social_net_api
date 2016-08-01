@@ -4,5 +4,5 @@ var HashTable = require('hashtable');// hashtable to orginize states
 
 module.exports =
 {
-  var learning_states_hash_table = new HashTable();// hash table in which the states will be stored in
+  learning_states_hash_table : new HashTable()// hash table in which the states will be stored in
 };//end of module.exports
