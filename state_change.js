@@ -55,32 +55,7 @@ module.exports = {
   // call that starts the process of the functions on this page
   doc_call : function (reccomendation_obj, learning_states_hash_table, callback) {
     //var temp_hash_table;
-    get_new_state_transition("data", function (err, key, state_transition_obj) {
-      if (err) throw err;
-      //learning_states_hash_table.put(key, state_transition_obj);//inserting into hashtable
 
-      get_current_state_key(function (err, current_state_key) {
-
-        add_new_state(state_transition_obj, key, current_state_key, learning_states_hash_table, function (err, learning_states_hash_table)
-        {
-          //temp_hash_table = learning_states_hash_table;
-          if (err) throw err;
-
-          console.log("current_key: " + current_key);
-          //setting a the new key as the last key
-          current_key.current_key.last_key = key;
-
-          console.log("current_key: " + current_key);
-          print_whole_table();
-          callback(null, learning_states_hash_table);
-        })//end add_new_state function call
-
-      })//end get_current_state_key function call
-
-
-
-
-    })//end get_new_state_transition call
   },//end doc_call
 
   /*
@@ -128,6 +103,40 @@ module.exports = {
     callback(null, current_key);
   },
 
+  get_new_key : function (callback) {
+    console.log("get_new_key started");
+    var key;
+    var is_in = true;
+    key = randomstring.generate(7);
+    /*
+    while (is_in = true)
+    {
+      console.log("while");
+      //generate a ramdom string of numbers for the key
+      key = randomstring.generate(7);
+      console.log(key);
+
+      is_in != learning_states_hash_table.has(key);
+
+
+      //check if string is already used
+
+  /*
+      if ( = false)
+      {
+        console.log(key + " is already in hashtable");
+      }
+      else
+      {
+        is_in = false;
+      }
+
+      //if string is already used, generates a new string
+    }*/
+
+    callback(null, key);
+
+  },//end of get_new_key
 
 
 
@@ -143,6 +152,9 @@ module.exports = {
     };
 
     var key;//new key
+    key = randomstring.generate(7);
+
+    /*
 
     get_new_key(function (err, new_key) {
       if (err) throw err;
@@ -150,6 +162,7 @@ module.exports = {
       console.log("New key: " + new_key);
 
     });//end get_new_key
+    */
 
     new_state_transition.inputKnowledgeItemsID = data.inputKnowledgeItemsID;
     new_state_transition.OutputKnowledgeItemsID = data.OutputKnowledgeItemsID;
@@ -193,40 +206,7 @@ module.exports = {
     callback(null, key, new_state_transition);
   },//end get_new_state_transition
 
-  get_new_key : function (callback) {
-    console.log("get_new_key started");
-    var key;
-    var is_in = true;
-    key = randomstring.generate(7);
-    /*
-    while (is_in = true)
-    {
-      console.log("while");
-      //generate a ramdom string of numbers for the key
-      key = randomstring.generate(7);
-      console.log(key);
 
-      is_in != learning_states_hash_table.has(key);
-
-
-      //check if string is already used
-
-  /*
-      if ( = false)
-      {
-        console.log(key + " is already in hashtable");
-      }
-      else
-      {
-        is_in = false;
-      }
-
-      //if string is already used, generates a new string
-    }*/
-
-    callback(null, key);
-
-  },//end of get_new_key
 
   get_derived_knowledge_ID : function (data, callback) {
     var id = "test";
