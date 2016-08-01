@@ -34,10 +34,9 @@ var randomstring = require("randomstring");//generates random strings
 
 //var learning_states_hash_table = new HashTable();// hash table in which the states will be stored in
 
-module.exports =
-{
+module.exports = {
 
-  var print_whole_table = function () {
+  print_whole_table : function() {
     //prints whole hash table
     var arr = learning_states_hash_table.keys();
 
@@ -54,7 +53,7 @@ module.exports =
 
 
   // call that starts the process of the functions on this page
-  var doc_call = function (reccomendation_obj, learning_states_hash_table, callback) {
+  doc_call : function (reccomendation_obj, learning_states_hash_table, callback) {
     //var temp_hash_table;
     get_new_state_transition("data", function (err, key, state_transition_obj) {
       if (err) throw err;
@@ -65,6 +64,7 @@ module.exports =
         add_new_state(state_transition_obj, key, current_state_key, learning_states_hash_table, function (err, learning_states_hash_table)
         {
           //temp_hash_table = learning_states_hash_table;
+          if (err) throw err;
 
           console.log("current_key: " + current_key);
           //setting a the new key as the last key
@@ -81,7 +81,7 @@ module.exports =
 
 
     });//end get_new_state_transition call
-  };//end doc_call
+  }//end doc_call
 
   /*
     Prerequisite: hashtable objects must have learningStateID
@@ -90,7 +90,7 @@ module.exports =
   */
 
 
-  var add_new_state = function (new_state_transition, new_state_transition_key, current_state_key, learning_states_hash_table, callback) {
+  add_new_state : function (new_state_transition, new_state_transition_key, current_state_key, learning_states_hash_table, callback) {
     //gets current state
     var current_state = learning_states_hash_table.get(current_state_key);
 
