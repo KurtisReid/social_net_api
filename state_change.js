@@ -41,22 +41,14 @@ var randomstring = require("randomstring");//generates random strings
 module.exports = {
 
   print_whole_table : function() {
+    //NOTE: working function
     //prints whole hash table
     console.log('print_whole_table');
-    var arr = learning_states_hash_table.keys();
-
-    learning_states_hash_table.forEach(function () {
-      console.log("trying for each");
-      console.log(learning_states_hash_table.learningStateID);
+    learning_states_hash_table.forEach(function (key, value) {
+      console.log("Key: " + key);
+      console.log(value);
+      //console.log(input_hash_table.learningStateID);
     });//end of learning_states_hash_table.forEach
-
-
-    for(var i = 0; i < arr.length; i++)
-    {
-      console.log(arr[i]);
-      console.log(learning_states_hash_table.get(arr[i]));
-    }
-
 
   },//end print_whole_table
 
