@@ -1,4 +1,19 @@
 //file that stores the hashtable that strores the learningStates
+/*
+
+
+
+NOTE: due to .put not working, hashmap is always empty
+
+
+
+
+
+
+
+
+
+*/
 
 var HashTable = require('hashtable');// hashtable to orginize states
 var fs = require("fs");
@@ -14,16 +29,34 @@ module.exports =
     ls_hash_table.put('init', value);
     callback(null, ls_hash_table);
   },//end of make_new_hash_table
+
   set_learning_states_hash_table : function(key, value) {
     console.log("set_learning_states_hash_table");
     learning_states_hashtable.put(key, value);
   },//end of set_learning_states_hash_table
 
   read_from_file : function (callback) {
-    var file = require('./ls_hash_tables');
-    console.log(file.toString());
+    console.log("read_from_file");
+    fs.readFile('ls_hash_tables', 'utf8', function (err,data) {
+      if (err) {
+        return console.log(err);
+      }
+
+
+      //var arr = data.keys();
+
+      learning_states_hash_table.forEach(function () {
+        console.log("trying for each");
+        console.log(learning_states_hash_table.learningStateID);
+      });
+
+      console.log("data: " + data);
+    });//end of readFile
     callback(null);
   },//end of read_from_file
+  set_hash_table_from_file : function () {
+
+  },
 
   write_to_file : function(ls_hash_table) {
     // writing to file
@@ -44,5 +77,17 @@ module.exports =
       console.log("learning_states_hash_table.put(key, data);")
       //learning_states_hash_table.put(key, data);
       callback(null, learning_states_hash_table);
-    }//end of add_to_hash
+    },//end of add_to_hash
+    iterate_and_write : function () {
+      var arr = learning_states_hash_table.keys();
+      console.log(arr);
+
+      console.log('iterate_and_write');
+      for(var i = 0; i < arr.length; i++)
+      {
+        console.log(arr[i]);
+        console.log(learning_states_hash_table.get(arr[i]));
+      }
+
+    }
 };//end of module.exports
