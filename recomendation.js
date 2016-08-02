@@ -1,11 +1,12 @@
 // recommendation is selected
 
 //include state_change
+var fs = require("fs");
 var state_change = require('./state_change');
 var learning_states_hash_table = require('./learning_states_hashtable').learning_states_hash_table;
 var learning_s_hash = require('./learning_states_hashtable');
-var current_key = require('./current_key').last_key;//key of the last learning state
-var fs = require("fs");
+var current_key = fs.readFileSync('cs_key', 'utf8');;//key of the last learning state
+
 
 var reccoemndation_obj = {
 "OutputKnowledgeItemsID": null,
@@ -52,7 +53,7 @@ module.exports =
           //setting a the new key as the last key
           current_key.current_key = key;
 
-          fs.writeFile('c_key.json', key.toString(), function (err) {
+          fs.writeFile('cs_key', key.toString(), function (err) {
             if (err) return console.log(err);
             console.log('POST to c_key sucessfull');
 
