@@ -3,7 +3,9 @@
 //include state_change
 var state_change = require('./state_change');
 var learning_states_hash_table = require('./learning_states_hashtable').learning_states_hash_table;
+var learning_s_hash = require('./learning_states_hashtable');
 var current_key = require('./current_key').last_key;//key of the last learning state
+var fs = require("fs");
 
 var reccoemndation_obj = {
 "OutputKnowledgeItemsID": null,
@@ -37,9 +39,12 @@ module.exports =
       //learning_states_hash_table.put(key, state_transition_obj);//inserting into hashtable
 
       state_change.get_current_state_key(function (err, current_state_key) {
+        console.log("state_change.get_current_state_key");
+        console.log(current_state_key);
 
         state_change.add_new_state(state_transition_obj, key, current_state_key, learning_states_hash_table, function (err, ls_hash_table)
         {
+          console.log("state_change.add_new_state");
           //temp_hash_table = learning_states_hash_table;
           if (err) throw err;
 
@@ -47,10 +52,20 @@ module.exports =
           //setting a the new key as the last key
           current_key.current_key = key;
 
+          fs.writeFile('c_key.json', key.toString(), function (err) {
+            if (err) return console.log(err);
+            console.log('POST to c_key sucessfull');
+
+
+          });//end of fs.writefile
+
+
           console.log("current_key: " + current_key);
           state_change.print_whole_table();
 
           learning_states_hash_table.learning_states_hashtable = ls_hash_table;
+
+          learning_s_hash.write_to_file(ls_hash_table);//writing hashtable to file
 
           console.log("///////////////////////// learning_states_hash_table.learning_states_hashtable /////////////// ");
           console.log(learning_states_hash_table.learning_states_hashtable);

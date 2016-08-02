@@ -10,6 +10,7 @@ var API_KEY = require('./API_KEY').api_key;//acess api_key stored on another fil
 var current_key = require('./current_key').last_key;//key of the last learning state
 var learning_states_hash_table = require('./learning_states_hashtable').learning_states_hash_table;
 var get_ls_hash_table = require('./learning_states_hashtable').make_new_hash_table;
+var set_ls_hash_table = require('./learning_states_hashtable');
 var HashTable = require('hashtable');// hashtable to orginize states
 var randomstring = require("randomstring");//generates random strings
 
@@ -41,7 +42,7 @@ module.exports = {
     //prints whole hash table
     var arr = learning_states_hash_table.keys();
 
-    console.log('For loop');
+    console.log('print_whole_table');
     for(var i = 0; i < arr.length; i++)
     {
       console.log(arr[i]);
@@ -69,6 +70,7 @@ module.exports = {
   add_new_state : function (new_state_transition, new_state_transition_key, current_state_key, learning_states_hash_table, callback) {
     //gets current state
     console.log("add_new_state");
+    var ls_h_t = learning_states_hash_table;
       var current_state;
 
       if (learning_states_hash_table.get(current_state_key) == undefined)
@@ -81,6 +83,9 @@ module.exports = {
         });//end get_ls_hash_table function call
 
 
+      }
+      else {
+        current_state = learning_states_hash_table.get(current_state_key);
       }
 
       console.log("current_state: " + current_state);
@@ -102,8 +107,13 @@ module.exports = {
 
 
     //put current state back into hashtable
-    learning_states_hash_table.put(current_state_key, current_state);
+    console.log("test");
 
+    set_ls_hash_table.add_to_hash(current_state_key, current_state, function (err, hashtable) {
+      console.log("test try sucessfull");
+      callback(null, learning_states_hash_table);
+    });
+    console.log("test sucessfull");
     //returns learning_states_hash_table
     callback(null, learning_states_hash_table);
 

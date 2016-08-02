@@ -6,6 +6,7 @@ var recomendation = require('./recomendation');
 //include state_change.js
 var state_change = require('./state_change.js');
 
+var learning_s_hash = require('./learning_states_hashtable');
 
 
 
@@ -38,8 +39,39 @@ recomendation.set_reccomendation_obj(outputID, inputID, function (err, rec_objec
   recomendation.set_recc_as_learning_state(rec_object, function (err) {
     if (err) throw err;
     rec_obj = rec_object;
+
+    recomendation.set_reccomendation_obj("hello", "hey", function (err, rec_object){
+      console.log("recomendation.set_reccomendation_obj");
+      if (err) throw err;
+      console.log("rec_object: " + rec_object);
+
+      //create reccomendation
+      recomendation.set_recc_as_learning_state(rec_object, function (err) {
+        console.log(recomendation.set_recc_as_learning_state);
+        if (err) throw err;
+        rec_obj = rec_object;
+        console.log("/44444444444444444444444444///////////////////////////");
+        //learning_s_hash.read_from_file(function (err) {});
+
+
+
+      });//end of set_recc_as_learning_state function call
+    });//end of set_reccomendation_obj function call
+
+
+
+
   });//end of set_recc_as_learning_state function call
 });//end of set_reccomendation_obj function call
 
+
 console.log("////////////////////////////");
-console.log(rec_obj);
+learning_s_hash.read_from_file(function (err) {});
+
+console.log("############################################### 2 ###############################");
+
+
+
+
+
+//console.log(rec_obj);
