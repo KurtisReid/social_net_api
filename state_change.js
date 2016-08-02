@@ -42,9 +42,15 @@ module.exports = {
 
   print_whole_table : function() {
     //prints whole hash table
+    console.log('print_whole_table');
     var arr = learning_states_hash_table.keys();
 
-    console.log('print_whole_table');
+    learning_states_hash_table.forEach(function () {
+      console.log("trying for each");
+      console.log(learning_states_hash_table.learningStateID);
+    });//end of learning_states_hash_table.forEach
+
+
     for(var i = 0; i < arr.length; i++)
     {
       console.log(arr[i]);
