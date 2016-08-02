@@ -62,9 +62,28 @@ module.exports =
     // writing to file
 
     console.log("learning_states_hashtable.js, write_to_file");
-    fs.writeFile('ls_hash_tables', ls_hash_table.toString(), function (err) {
+
+    //write to LFST
+    var obj = {};
+    //iterate through hashtable
+    learning_states_hash_table.forEach(function (key, value) {
+      console.log("Key: " + key);
+      console.log(value);
+
+      //putting data into javascript object
+      obj[key] = value;
+
+      //console.log(input_hash_table.learningStateID);
+    });//end of learning_states_hash_table.forEach
+
+    fs.writeFile('ls_hash_tables', obj, function (err) {
       if (err) return console.log(err);
       console.log('POST to ls_hash_table.json sucessfull');
+
+
+
+      //add to json arrays
+
 
 
       });

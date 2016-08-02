@@ -25,6 +25,7 @@ var input_hash_table = new HashTable();// hash table in which the InputKnowledge
 
 //input data into hashtable
 input_hash_table.put(inputID, "inputKnowledgeItem 1");
+
 //input_hash_table.put("try", "inputKnowledgeItem 2");
 
 
