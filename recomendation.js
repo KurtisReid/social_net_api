@@ -40,12 +40,12 @@ module.exports =
       //learning_states_hash_table.put(key, state_transition_obj);//inserting into hashtable
 
       state_change.get_current_state_key(function (err, current_state_key) {
-        console.log("state_change.get_current_state_key");
+        console.log("state_change.get_current_state_key callback");
         console.log(current_state_key);
 
         state_change.add_new_state(state_transition_obj, key, current_state_key, learning_states_hash_table, function (err, ls_hash_table)
         {
-          console.log("state_change.add_new_state");
+          console.log("state_change.add_new_state callback");
           //temp_hash_table = learning_states_hash_table;
           if (err) throw err;
 
@@ -68,12 +68,12 @@ module.exports =
 
           learning_s_hash.write_to_file(ls_hash_table);//writing hashtable to file
 
-          console.log("///////////////////////// learning_states_hash_table.learning_states_hashtable /////////////// ");
-          console.log(learning_states_hash_table.learning_states_hashtable);
-          console.log("///////////////////////// ||||||||||||||||||||||||||||||||||||||||||||||||||||");
-          console.log(ls_hash_table);
+          //console.log("///////////////////////// learning_states_hash_table.learning_states_hashtable /////////////// ");
+          //console.log(learning_states_hash_table.learning_states_hashtable);
+          //console.log("///////////////////////// ||||||||||||||||||||||||||||||||||||||||||||||||||||");
+          //console.log(ls_hash_table);
           console.log("|||||||||||||||||||||||||||||||||||||||||");
-          //callback(null, learning_states_hash_table);
+          callback(null, learning_states_hash_table);
         })//end add_new_state function call
 
       })//end get_current_state_key function call
