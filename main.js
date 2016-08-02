@@ -25,6 +25,8 @@ var input_hash_table = new HashTable();// hash table in which the InputKnowledge
 
 //input data into hashtable
 input_hash_table.put(inputID, "inputKnowledgeItem 1");
+//input_hash_table.put("try", "inputKnowledgeItem 2");
+
 
 //get keys
 
@@ -40,6 +42,22 @@ recomendation.set_reccomendation_obj(outputID, inputID, function (err, rec_objec
     if (err) throw err;
     rec_obj = rec_object;
 
+
+
+
+    console.log("////////////////////////////");
+    learning_s_hash.read_from_file(function (err) {});
+
+  });//end of set_recc_as_learning_state function call
+});//end of set_reccomendation_obj function call
+
+
+
+
+console.log("############################################### 2 ###############################");
+
+
+//inserting second object
     recomendation.set_reccomendation_obj("hello", "hey", function (err, rec_object){
       console.log("recomendation.set_reccomendation_obj");
       if (err) throw err;
@@ -47,28 +65,19 @@ recomendation.set_reccomendation_obj(outputID, inputID, function (err, rec_objec
 
       //create reccomendation
       recomendation.set_recc_as_learning_state(rec_object, function (err) {
-        console.log(recomendation.set_recc_as_learning_state);
+        console.log("recomendation.set_recc_as_learning_state");
         if (err) throw err;
         rec_obj = rec_object;
         console.log("/44444444444444444444444444///////////////////////////");
         //learning_s_hash.read_from_file(function (err) {});
+        console.log("////////////////////////////");
+        learning_s_hash.read_from_file(function (err) {});
 
 
 
       });//end of set_recc_as_learning_state function call
     });//end of set_reccomendation_obj function call
 
-
-
-
-  });//end of set_recc_as_learning_state function call
-});//end of set_reccomendation_obj function call
-
-
-console.log("////////////////////////////");
-learning_s_hash.read_from_file(function (err) {});
-
-console.log("############################################### 2 ###############################");
 
 
 
