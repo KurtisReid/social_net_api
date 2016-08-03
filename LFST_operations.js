@@ -18,7 +18,8 @@ module.exports =
 
     str_doc = JSON.stringify(doc);
     obj = JSON.parse(str_doc);
-        obj.OutputKnowledgeItems[obj.OutputKnowledgeItems.length] = item;//adds example to json file, the JSON.parse converts string to json object
+    obj.OutputKnowledgeItems[obj.OutputKnowledgeItems.length] = item;//adds example to json file, the JSON.parse converts string to json object
+    console.log("inserted into OutputKnowledgeItems");
   },//end of insert_into_OutputKnowledgeItems
   insert_into_inputKnowledgeItems : function (item) {
     var obj;
@@ -27,7 +28,8 @@ module.exports =
 
     str_doc = JSON.stringify(doc);
     obj = JSON.parse(str_doc);
-        obj.inputKnowledgeItems[obj.inputKnowledgeItems.length] = item;//adds example to json file, the JSON.parse converts string to json object
+    obj.inputKnowledgeItems[obj.inputKnowledgeItems.length] = item;//adds example to json file, the JSON.parse converts string to json object
+    console.log("inserted into inputKnowledgeItems");
   },//end of insert_into_inputKnowledgeItems
   insert_into_learningState: function (item) {
     var obj;
@@ -36,7 +38,8 @@ module.exports =
 
     str_doc = JSON.stringify(doc);
     obj = JSON.parse(str_doc);
-        obj.learningState[obj.learningState.length] = item;//adds example to json file, the JSON.parse converts string to json object
+    obj.learningState[obj.learningState.length] = item;//adds example to json file, the JSON.parse converts string to json object
+    console.log("inserted into learningState");
   },//end of insert_into_learningState\\
   insert_into_stateTransition: function (item) {
     var obj;
@@ -45,7 +48,8 @@ module.exports =
 
     str_doc = JSON.stringify(doc);
     obj = JSON.parse(str_doc);
-        obj.stateTransition[obj.stateTransition.length] = item;//adds example to json file, the JSON.parse converts string to json object
+    obj.stateTransition[obj.stateTransition.length] = item;//adds example to json file, the JSON.parse converts string to json object
+    console.log("inserted into stateTransition");
   },//end of insert_into_stateTransition\
   insert_into_outputReccomendations: function (item) {
     var obj;
@@ -54,7 +58,8 @@ module.exports =
 
     str_doc = JSON.stringify(doc);
     obj = JSON.parse(str_doc);
-        obj.outputReccomendations[obj.outputReccomendations.length] = item;//adds example to json file, the JSON.parse converts string to json object
+    obj.outputReccomendations[obj.outputReccomendations.length] = item;//adds example to json file, the JSON.parse converts string to json object
+    console.log("inserted into outputReccomendations");
   },//end of insert_into_outputReccomendations
 
 //geters
@@ -97,8 +102,10 @@ module.exports =
   write_to_LFST : function (section, data) {
     //section = outputReccomendations, or inputKnowledgeItems, or etc.
     //data = data to be Inserted
-
-    
+    fs.writeFile('test.json', JSON.stringify(obj), function (err) {
+    if (err) return console.log(err);
+    console.log('writing to LFST sucessfull');
+    });
 
   }
 
