@@ -1,3 +1,6 @@
+//Issues with program:
+// concat not working
+
 var express = require('express');
 var app = express();
 var fs = require("fs");
@@ -68,6 +71,7 @@ var find_school = function(school_name, input_doc) {
   parsed_document = JSON.parse(input_doc);//parsing the json document
 
   var i = 0;//counter
+
   while (parsed_document.results[i]['school.name'] != school_name) {
     i++;
   }
@@ -137,9 +141,14 @@ https.get('https://api.data.gov/ed/collegescorecard/v1/schools.json?api_key='+AP
 
 
 var post_to_input = function (data_to_be_posted, user_id, file_to_be_modified) {
-  var obj = JSON.parse(file_to_be_modified);//obj = LFST document
+
+  console.log(file_to_be_modified);
+  var obj = file_to_be_modified;
+  //var obj = JSON.parse(file_to_be_modified);//obj = LFST document
   var temp_arr = [data_to_be_posted];
 
+  console.log("data_to_be_posted");
+  console.log(obj.inputKnowledgeItems);
   obj.inputKnowledgeItems = obj.inputKnowledgeItems.concat(temp_arr);
   console.log(obj.inputKnowledgeItems);
 
