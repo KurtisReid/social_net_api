@@ -83,8 +83,13 @@ var find_school = function(school_name, input_doc) {
   var postData = JSON.stringify(query);
   var id = "place holder";
 
-  post_to_input(postData, id, input);
-  post_to_input(JSON.parse(ex_dat), id, output);
+/*
+    send data to api
+*/
+
+
+  //post_to_input(postData, id, input);
+  //post_to_input(JSON.parse(ex_dat), id, output);
 /*
 //for interfaceing with other api
   var options = {
