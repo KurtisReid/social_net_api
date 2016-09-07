@@ -122,13 +122,14 @@ var find_school = function(school_name, input_doc) {
   */
 
   // write data to request body
-  console.log(postData);
+  //console.log(postData);
   //req.write(postData);
   //req.end();
 };
 
 
 //Gets school information
+/*
 https.get('https://api.data.gov/ed/collegescorecard/v1/schools.json?api_key='+API_KEY+'&school.name=kent+State&_zip=44240&_fields=school.name%2Cschool.tuition_revenue_per_fte,school.zip', (res) => {
   console.log(`Got response: ${res.statusCode}`);
   // consume response body
@@ -143,7 +144,7 @@ https.get('https://api.data.gov/ed/collegescorecard/v1/schools.json?api_key='+AP
 }).on('error', (e) => {
   console.log(`Got error: ${e.message}`);
 });
-
+*/
 
 var post_to_input = function (data_to_be_posted, user_id, file_to_be_modified) {
 
@@ -159,10 +160,31 @@ var post_to_input = function (data_to_be_posted, user_id, file_to_be_modified) {
 
   //obj.inputKnowledgeItems[obj.inputKnowledgeItems.length] = data_to_be_posted; // adds data_to_be_posted to the LFST
   //obj.inputKnowledgeItems.length += 1;
-
+/*
 // writing to file
   fs.writeFile('test.json', JSON.stringify(obj), function (err) {
   if (err) return console.log(err);
   console.log('POST sucessfull');
   });
+  */
+
+
+
 }
+
+app.get('/getSchoolPrice', function (req, res) {
+  console.log("/getSchoolPrice");
+
+  res.end("hello");
+
+  // return information
+});
+
+var server = app.listen(8081, function () {
+
+  var host = server.address().address;
+  var port = server.address().port;
+
+  console.log("Example app listening at http://%s:%s", host, port)
+
+});
