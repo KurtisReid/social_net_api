@@ -64,7 +64,7 @@ var ex_dat = '{"id":1,"cause":"finished coarse","distenceToLearningGoal":"19"}';
 
 
 //Takes json document, finds part spific to school, returns parsed json that contains nescciary information
-var find_school = function(school_name, input_doc) {
+var find_school = function(school_name, input_doc, callback) {
   var parsed_document;
   console.log("");
   console.log("findSchool");
@@ -82,11 +82,11 @@ var find_school = function(school_name, input_doc) {
   var ex_dat = '{"id":1,"cause":"finished coarse","distenceToLearningGoal":"19"}';
   var postData = JSON.stringify(query);
   var id = "place holder";
+  callback(null, postData);
 
 /*
     send data to api
 */
-
 
   //post_to_input(postData, id, input);
   //post_to_input(JSON.parse(ex_dat), id, output);
@@ -174,11 +174,40 @@ var post_to_input = function (data_to_be_posted, user_id, file_to_be_modified) {
 
 app.get('/getSchoolPrice', function (req, res) {
   console.log("/getSchoolPrice");
-
-  res.end("hello");
-
+  get_info(res, function(err, data) {
+    res.end(data);
+  });
   // return information
+
+
 });
+
+var get_info = function(res, callback) {
+  var dat;
+  https.get('https://api.data.gov/ed/collegescorecard/v1/schools.json?api_key='+API_KEY+'&school.name=kent+State&_zip=44240&_fields=school.name%2Cschool.tuition_revenue_per_fte,school.zip', (res) => {
+    console.log(`Got response: ${res.statusCode}`);
+    // consume response body
+    res.on('data', (d) => {
+        process.stdout.write(d);
+
+        find_school("Kent State University at Kent", d, function(err, school_data) {
+          console.log("///////////////////////////");
+          console.log(school_data)
+          dat = school_data;
+          callback(null, school_data);
+
+        });
+
+
+      });
+
+    res.resume();
+  }).on('error', (e) => {
+    console.log(`Got error: ${e.message}`);
+  });
+
+}
+
 
 var server = app.listen(8081, function () {
 
