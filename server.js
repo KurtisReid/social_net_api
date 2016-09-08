@@ -194,7 +194,10 @@ var get_info = function(res, callback) {
           console.log("///////////////////////////");
           console.log(school_data)
           dat = school_data;
-          callback(null, school_data);
+
+          var parsed_document = JSON.parse(dat);
+          console.log(parsed_document["school.tuition_revenue_per_fte"]);
+          callback(null, parsed_document["school.tuition_revenue_per_fte"]);
 
         });
 
@@ -207,6 +210,7 @@ var get_info = function(res, callback) {
   });
 
 }
+
 
 
 var server = app.listen(8081, function () {
