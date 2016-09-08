@@ -196,8 +196,9 @@ var get_info = function(res, callback) {
           dat = school_data;
 
           var parsed_document = JSON.parse(dat);
+          var price = parsed_document["school.tuition_revenue_per_fte"];
           console.log(parsed_document["school.tuition_revenue_per_fte"]);
-          callback(null, parsed_document["school.tuition_revenue_per_fte"]);
+          callback(null, price.toString());
 
         });
 
