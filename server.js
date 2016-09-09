@@ -175,12 +175,31 @@ var post_to_input = function (data_to_be_posted, user_id, file_to_be_modified) {
 app.get('/getSchoolPrice', function (req, res) {
   console.log("/getSchoolPrice");
   get_info(res, function(err, data) {
-    res.end(data);
+    var parsed_document = JSON.parse(data);
+    console.log(parsed_document);
+
+
+    var price = parsed_document["school.tuition_revenue_per_fte"];
+    console.log(parsed_document["school.tuition_revenue_per_fte"]);
+    res.end(price.toString());
   });
   // return information
 
 
 });
+app.get('/getSchoolName', function (req, res) {
+  console.log("/getSchoolName");
+  get_info(res, function(err, data) {
+    var parsed_document = JSON.parse(data);
+    var price = parsed_document["school.name"];
+    console.log(parsed_document["school.name"]);
+    res.end(price.toString());
+  });
+  // return information
+
+
+});
+
 
 var get_info = function(res, callback) {
   var dat;
@@ -193,12 +212,13 @@ var get_info = function(res, callback) {
         find_school("Kent State University at Kent", d, function(err, school_data) {
           console.log("///////////////////////////");
           console.log(school_data)
-          dat = school_data;
+          //dat = JSON.stringify(school_data);
 
-          var parsed_document = JSON.parse(dat);
-          var price = parsed_document["school.tuition_revenue_per_fte"];
-          console.log(parsed_document["school.tuition_revenue_per_fte"]);
-          callback(null, price.toString());
+
+
+
+
+          callback(null, school_data);
 
         });
 
