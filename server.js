@@ -181,7 +181,7 @@ app.get('/getSchoolPrice', function (req, res) {
 
     var price = parsed_document["school.tuition_revenue_per_fte"];
     console.log(parsed_document["school.tuition_revenue_per_fte"]);
-    res.end(price.toString());
+    res.end(data);
   });
   // return information
 
@@ -203,7 +203,7 @@ app.get('/getSchoolName', function (req, res) {
 
 var get_info = function(res, callback) {
   var dat;
-  https.get('https://api.data.gov/ed/collegescorecard/v1/schools.json?api_key='+API_KEY+'&school.name=kent+State&_zip=44240&_fields=school.name%2Cschool.tuition_revenue_per_fte,school.zip', (res) => {
+  https.get('https://api.data.gov/ed/collegescorecard/v1/schools.json?api_key='+API_KEY+'&school.name=kent+State&_zip=44240&_distance=20mi&_fields=school.name%2Cschool.tuition_revenue_per_fte,school.zip', (res) => {
     console.log(`Got response: ${res.statusCode}`);
     // consume response body
     res.on('data', (d) => {
