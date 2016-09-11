@@ -203,7 +203,7 @@ app.get('/getSchoolName', function (req, res) {
 
 var get_info = function(res, callback) {
   var dat;
-  https.get('https://api.data.gov/ed/collegescorecard/v1/schools.json?api_key='+API_KEY+'&school.name=kent+State&_zip=44240&_distance=20mi&_fields=school.name%2Cschool.tuition_revenue_per_fte,school.zip,2013.cost.avg_net_price.public', (res) => {
+  https.get('https://api.data.gov/ed/collegescorecard/v1/schools.json?api_key='+API_KEY+'&school.name=kent+State&_zip=44240&_distance=100mi&_fields=school.name%2Cschool.tuition_revenue_per_fte,school.zip,2013.cost.avg_net_price.public,&_sort=2013.cost.avg_net_price.public', (res) => {
     console.log(`Got response: ${res.statusCode}`);
     // consume response body
     res.on('data', (d) => {
