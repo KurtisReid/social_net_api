@@ -188,6 +188,9 @@ app.get('/getSchoolPrice', function (req, res) {
 
 });
 app.get('/getSchoolName', function (req, res) {
+
+
+
   console.log("/getSchoolName");
   get_info(res, function(err, data) {
     var parsed_document = JSON.parse(data);
@@ -199,6 +202,43 @@ app.get('/getSchoolName', function (req, res) {
 
 
 });
+
+//geting info from zip
+app.get('/getSchoolByZip/:zip', function (req, res) {
+  var zip = req.params.zip;
+
+
+  console.log("/getSchoolByZip");
+  get_info_by_zip(res, zip, function(err, data) {
+    var parsed_document = JSON.parse(data);
+    var price = parsed_document["school.name"];
+    console.log(parsed_document);
+    res.end(data);
+  });
+  // return information
+
+
+});
+
+var get_info_by_zip = function(res, zip, callback) {
+  var dat;
+  https.get('https://api.data.gov/ed/collegescorecard/v1/schools.json?api_key='+API_KEY+'&_zip='+ zip +'&_distance=100mi&_fields=school.name%2Cschool.tuition_revenue_per_fte,school.zip,2013.cost.avg_net_price.public,&_sort=2013.cost.avg_net_price.public', (res) => {
+    console.log(`Got response: ${res.statusCode}`);
+    // consume response body
+    res.on('data', (d) => {
+        process.stdout.write(d);
+        callback(null, d);
+
+
+
+
+      });
+
+    res.resume();
+  }).on('error', (e) => {
+    console.log(`Got error: ${e.message}`);
+  });
+}
 
 
 var get_info = function(res, callback) {
