@@ -1,0 +1,27 @@
+{
+  "Goal": "Computer science degree",
+	"CoursesReq": [
+		{
+			"CourseNumber": "10051",
+			"CourseShortTitle": "INTRO TO COMPUTER SCIENCE",
+			"CourseCreditMinimumValue": "4"
+		},
+		{
+			"CourseNumber": "13001",
+			"CourseShortTitle": "CS I PROGRAM/PROBLEM SOLVING",
+			"CourseCreditMinimumValue": "4",
+      "PreReqCourseNum": "10051"
+		},
+		{
+			"CourseNumber": "23001",
+			"CourseShortTitle": "CS II DATA STRUCTURES",
+			"CourseCreditMinimumValue": "4",
+      "PreReqCourseNum": "13001"
+		},
+		{
+			"CourseNumber": "23022",
+			"CourseShortTitle": "DISCRETE STRUCTURES FOR CS",
+			"CourseCreditMinimumValue": "3"
+		}
+	]
+}
