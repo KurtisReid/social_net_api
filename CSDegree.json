@@ -4,7 +4,8 @@
 		{
 			"CourseNumber": "10051",
 			"CourseShortTitle": "INTRO TO COMPUTER SCIENCE",
-			"CourseCreditMinimumValue": "4"
+			"CourseCreditMinimumValue": "4",
+      "PreReqCourseNum": null
 		},
 		{
 			"CourseNumber": "13001",
