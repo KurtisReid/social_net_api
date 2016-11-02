@@ -15,9 +15,9 @@ var mockLFST = JSON.parse(LFST);
 var check_requirments = function (classesTaken, classToTake, studentLFST, callback)
 {
   var i = 1;//temp
-  var js = JSON.parse(classToTake);
-  console.log(js.Goal);
-  if (classesTaken.CourseNumber == classToTake.CoursesReq.PreReqCourseNum || classToTake.CoursesReq.PreReqCourseNum == null)//requirments are met
+  //var js = JSON.parse(classToTake);
+  console.log(classToTake.CoursesReq[i].PreReqCourseNum);
+  if (classesTaken.CourseNumber == classToTake.CoursesReq[i].PreReqCourseNum || classToTake.CoursesReq.PreReqCourseNum == null)//requirments are met
   {
     //add to learning state
     studentLFST.learningState.push(classToTake.CoursesReq[i]);//adding class taken to array
@@ -32,6 +32,6 @@ var check_requirments = function (classesTaken, classToTake, studentLFST, callba
 
 }
 
-check_requirments(mock_progress, input, mockLFST, function (err) {
+check_requirments(mock_progress, obj, mockLFST, function (err) {
 
 });
