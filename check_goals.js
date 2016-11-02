@@ -45,3 +45,9 @@ var check_requirments = function (classesTaken, classToTake, studentLFST, callba
 check_requirments(mock_progress, obj, mockLFST, function (err) {
 
 });
+
+
+
+//use a binary search to check for classes
+// sort classes in order
+// compare them to PreReq
