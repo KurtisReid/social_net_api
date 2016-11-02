@@ -17,14 +17,15 @@ var check_requirments = function (classesTaken, classToTake, studentLFST, callba
 {
   //var i = 1;//temp
   //var js = JSON.parse(classToTake);
-  console.log(classesTaken.classesTaken[0]);
+  //console.log(classesTaken.classesTaken[0]);
   //console.log(classToTake.CoursesReq[i].PreReqCourseNum);
-  for (var i = 0; i < classesTaken.classesTaken.length; i++)
+  for (var i = 0; i < classToTake.CoursesReq.length; i++)
   {
-    if (classesTaken.classesTaken[0].CourseNumber == classToTake.CoursesReq[i].PreReqCourseNum || classToTake.CoursesReq.PreReqCourseNum == null)//requirments are met
+    if (classToTake.CoursesReq.PreReqCourseNum === null || classesTaken.classesTaken[0].CourseNumber === classToTake.CoursesReq[i].PreReqCourseNum)//requirments are met
     {
+
       //add to learning state
-      console.log(classesTaken.classesTaken[0].CourseNumber + "==" + classToTake.CoursesReq[i].PreReqCourseNum);
+      console.log(classesTaken.classesTaken[0].CourseNumber.valueOf() + "==" + classToTake.CoursesReq[i].PreReqCourseNum);
       console.log("requirments met");
       studentLFST.learningState.push(classToTake.CoursesReq[i]);//adding class taken to array
       callback(null);
