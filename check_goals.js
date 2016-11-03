@@ -33,7 +33,7 @@ var check_requirments = function (classesTaken, classToTake, studentLFST, callba
     else
     {
       // add to OutputKnowledgeItems
-      console.log("need to take class");
+      console.log("need to take class: " + classToTake.CoursesReq[i].PreReqCourseNum);
       studentLFST.OutputKnowledgeItems.push(classToTake.CoursesReq[i]);//adding needed class to array
       callback(null);
     }

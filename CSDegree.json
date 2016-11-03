@@ -22,7 +22,8 @@
 		{
 			"CourseNumber": "23022",
 			"CourseShortTitle": "DISCRETE STRUCTURES FOR CS",
-			"CourseCreditMinimumValue": "3"
+			"CourseCreditMinimumValue": "3",
+      "PreReqCourseNum": "23001"
 		}
 	]
 }
