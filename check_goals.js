@@ -50,13 +50,16 @@ var check_requirments = function (classesTaken, classToTake, studentLFST, callba
 var create_steps = function (steps, callback)
 {
   // match course numbers to course discriptions
+  console.log("create steps");
+  //console.log(obj.CoursesReq[a]);
   for (var i = 0; i < steps.length; i++)
   {
-    for (var a = 0; a < classToTake.length(); a++)
+    for (var a = 0; a < obj.length; a++)
     {
-      if (classToTake.CoursesReq[a].CourseNumber == steps[i])
+
+      if (obj.CoursesReq[a].CourseNumber == steps[i])
       {
-        console.log("class found" + classToTake.CoursesReq[a]);
+        console.log("class found" + obj.CoursesReq[a]);
       }
     }
   }
@@ -75,6 +78,9 @@ check_requirments(mock_progress, obj, mockLFST, function (err, steps) {
     //
 
   }
+  create_steps(steps, function(){
+
+  })
   //find class names
 
 
