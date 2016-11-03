@@ -51,7 +51,7 @@ var create_steps = function (steps, callback)
 {
   // match course numbers to course discriptions
   console.log("create steps");
-  //console.log(obj.CoursesReq[a]);
+  console.log(obj.CoursesReq);
   for (var i = 0; i < steps.length; i++)
   {
     for (var a = 0; a < obj.length; a++)
