@@ -50,23 +50,24 @@ var check_requirments = function (classesTaken, classToTake, studentLFST, callba
 var create_steps = function (steps, callback)
 {
   // match course numbers to course discriptions
+  var full_classes = [];//houses full class discription
   console.log("create steps");
-  console.log(obj.CoursesReq);
-  for (var i = 0; i < steps.length; i++)
+  //console.log(obj.CoursesReq.length);
+  for (var i = 0; i < steps.length; i++)//iterate through steps
   {
-    for (var a = 0; a < obj.length; a++)
+    for (var a = 0; a < obj.CoursesReq.length; a++)//iterate through list of potential classes
     {
 
-      if (obj.CoursesReq[a].CourseNumber == steps[i])
+      if (obj.CoursesReq[a].CourseNumber == steps[i])//check if PreReqCourseNum = course number
       {
-        console.log("class found" + obj.CoursesReq[a]);
+        //console.log("class found" + obj.CoursesReq[a]);//
+        full_classes.push(obj.CoursesReq[a]);//add full class (including discriptions) to array
       }
     }
   }
 
   //sort the courses into order
-
-
+  callback(null, full_classes);//return array of full course discriptions
 }
 
 check_requirments(mock_progress, obj, mockLFST, function (err, steps) {
