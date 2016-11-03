@@ -15,6 +15,8 @@ var mockLFST = JSON.parse(LFST);
 
 var check_requirments = function (classesTaken, classToTake, studentLFST, callback)
 {
+  var steps = [];
+  var x = 0;
   //var i = 1;//temp
   //var js = JSON.parse(classToTake);
   //console.log(classesTaken.classesTaken[0]);
@@ -28,21 +30,53 @@ var check_requirments = function (classesTaken, classToTake, studentLFST, callba
       console.log(classesTaken.classesTaken[0].CourseNumber.valueOf() + "==" + classToTake.CoursesReq[i].PreReqCourseNum);
       console.log("requirments met");
       studentLFST.learningState.push(classToTake.CoursesReq[i]);//adding class taken to array
-      callback(null);
+
     }
     else
     {
       // add to OutputKnowledgeItems
+      steps.push(classToTake.CoursesReq[i].PreReqCourseNum);//add to list of classes to take
       console.log("need to take class: " + classToTake.CoursesReq[i].PreReqCourseNum);
       studentLFST.OutputKnowledgeItems.push(classToTake.CoursesReq[i]);//adding needed class to array
-      callback(null);
+
     }
+
   }
+  callback(null, steps);
 
 
 }
 
-check_requirments(mock_progress, obj, mockLFST, function (err) {
+var create_steps = function (steps, callback)
+{
+  // match course numbers to course discriptions
+  for (var i = 0; i < steps.length; i++)
+  {
+    for (var a = 0; a < classToTake.length(); a++)
+    {
+      if (classToTake.CoursesReq[a].CourseNumber == steps[i])
+      {
+        console.log("class found" + classToTake.CoursesReq[a]);
+      }
+    }
+  }
+
+  //sort the courses into order
+
+
+}
+
+check_requirments(mock_progress, obj, mockLFST, function (err, steps) {
+  //call create_steps
+  steps.sort();
+  for (var i = 0; i < steps.length; i++)
+  {
+    console.log(steps[i]);
+    //
+
+  }
+  //find class names
+
 
 });
 
