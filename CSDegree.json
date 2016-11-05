@@ -5,25 +5,29 @@
 			"CourseNumber": "10051",
 			"CourseShortTitle": "INTRO TO COMPUTER SCIENCE",
 			"CourseCreditMinimumValue": "4",
+      "Professor": "Kathy Stirbens",
       "PreReqCourseNum": null
 		},
 		{
 			"CourseNumber": "13001",
 			"CourseShortTitle": "CS I PROGRAM/PROBLEM SOLVING",
 			"CourseCreditMinimumValue": "4",
+      "Professor": "Angela Guercio",
       "PreReqCourseNum": "10051"
 		},
 		{
 			"CourseNumber": "23001",
 			"CourseShortTitle": "CS II DATA STRUCTURES",
 			"CourseCreditMinimumValue": "4",
+      "Professor": "Angela Guercio",
       "PreReqCourseNum": "13001"
 		},
 		{
 			"CourseNumber": "23022",
 			"CourseShortTitle": "DISCRETE STRUCTURES FOR CS",
 			"CourseCreditMinimumValue": "3",
-      "PreReqCourseNum": "23001"
+      "Professor": "Adeel Bhutta",
+      "PreReqCourseNum": "13001"
 		}
 	]
 }
