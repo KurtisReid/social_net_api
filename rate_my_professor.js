@@ -1,4 +1,11 @@
-var rmp = require("rmp-api");
+//takes professors name from proposed list of courses and sends them to rate my professor, which then returns the result
+
+var rmp = require("rmp-api");//rate my professor api
+
+
+var fs = require("fs");
+var input = fs.readFileSync('CSDegree.json', 'utf8');//read class info from file
+var class_list = JSON.parse(input);//parsed list of classes
 
 var callback = function(professor) {
   if (professor === null) {
@@ -16,4 +23,4 @@ var callback = function(professor) {
   console.log("First comment: " + professor.comments[0]);
 };
 
-rmp.get("Paul Lynch", callback);
+rmp.get(class_list.CoursesReq[0].Professor, callback);
