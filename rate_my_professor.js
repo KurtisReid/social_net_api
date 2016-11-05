@@ -6,9 +6,16 @@ var i = 0;//counter
 var fs = require("fs");
 var input = fs.readFileSync('CSDegree.json', 'utf8');//read class info from file
 var class_list = JSON.parse(input);//parsed list of classes
+module.exports =
+{
+  call : function (professor)
+  {
+    rmp.get(professor, callback);//cycle through and print out all professors
+  }
+};
 
 var callback = function(professor) {
-  i++;
+  //i++;//incriment counter
   if (professor === null) {
     console.log("No professor found.");
     return;
@@ -22,10 +29,11 @@ var callback = function(professor) {
   console.log("Chili: " + professor.chili);
   console.log("URL: " + professor.url);
   console.log("First comment: " + professor.comments[0]);
+  /*
   if (i < class_list.CoursesReq.length)//check for end of list
   {
     rmp.get(class_list.CoursesReq[i].Professor, callback);//recursivly iterate through list
-  }
+  }*/
 
 };
 

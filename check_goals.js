@@ -11,7 +11,8 @@ var obj = JSON.parse(input);
 var mock_progress = JSON.parse(fs.readFileSync('classesTaken.json', 'utf8'));//mock of courses already taken.
 var LFST = fs.readFileSync('MockLFST.json', 'utf8');
 var mockLFST = JSON.parse(LFST);
-
+var rate_my_professor = require('./rate_my_professor.js').call;
+var rmp = require('./rate_my_professor.js').callback;
 
 var check_requirments = function (classesTaken, classToTake, studentLFST, callback)
 {
@@ -61,6 +62,8 @@ var create_steps = function (steps, callback)
       if (obj.CoursesReq[a].CourseNumber == steps[i])//check if PreReqCourseNum = course number
       {
         //console.log("class found" + obj.CoursesReq[a]);//
+        rate_my_professor(obj.CoursesReq[a].Professor);//calls rate my professor api
+        //rmp.get(class_list.CoursesReq[a].Professor, callback);
         full_classes.push(obj.CoursesReq[a]);//add full class (including discriptions) to array
       }
     }
@@ -86,6 +89,8 @@ check_requirments(mock_progress, obj, mockLFST, function (err, steps) {
 
 
 });
+
+
 
 
 
