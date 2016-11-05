@@ -1,7 +1,7 @@
 //takes professors name from proposed list of courses and sends them to rate my professor, which then returns the result
 
 var rmp = require("rmp-api");//rate my professor api
-var i = 0;
+var i = 0;//counter
 
 var fs = require("fs");
 var input = fs.readFileSync('CSDegree.json', 'utf8');//read class info from file
@@ -22,9 +22,9 @@ var callback = function(professor) {
   console.log("Chili: " + professor.chili);
   console.log("URL: " + professor.url);
   console.log("First comment: " + professor.comments[0]);
-  if (i < class_list.CoursesReq.length)
+  if (i < class_list.CoursesReq.length)//check for end of list
   {
-    rmp.get(class_list.CoursesReq[i].Professor, callback);
+    rmp.get(class_list.CoursesReq[i].Professor, callback);//recursivly iterate through list
   }
 
 };
