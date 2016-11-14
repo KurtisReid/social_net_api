@@ -9,11 +9,13 @@ var https = require("https");
 var API_KEY = require('./API_KEY').api_key;//acess api_key stored on another file
 var fs = require("fs");
 
-var current_key = fs.readFileSync('cs_key', 'utf8');//key of the last learning state
+
+var current_key = 0;//key of the last learning state
+//var current_key = fs.readFileSync('cs_key', 'utf8');//key of the last learning state
 var learning_states_hash_table = require('./learning_states_hashtable').learning_states_hash_table;
 var get_ls_hash_table = require('./learning_states_hashtable').make_new_hash_table;
 var set_ls_hash_table = require('./learning_states_hashtable');
-var HashTable = require('hashtable');// hashtable to orginize states
+var HashTable = require('hashmap');// hashtable to orginize states
 var randomstring = require("randomstring");//generates random strings
 
 

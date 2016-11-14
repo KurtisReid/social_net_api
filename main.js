@@ -1,6 +1,6 @@
 //driver file aka main.js
 
-var HashTable = require('hashtable');// hashtable to orginize states
+var HashTable = require('hashmap');// hashtable to orginize states
 //include recomendation
 var recomendation = require('./recomendation');
 //include state_change.js
@@ -18,13 +18,13 @@ var inputID = "inKey";
 var output_hash_table = new HashTable();// hash table in which the OutputKnowledgeItems will be stored in
 
 //input data into hashtable
-output_hash_table.put(outputID, "OutputKnowledgeItem 1");
+output_hash_table.set(outputID, "OutputKnowledgeItem 1");
 
 //create hashtable for InputKnowledgeItems
 var input_hash_table = new HashTable();// hash table in which the InputKnowledgeItems will be stored in
 
 //input data into hashtable
-input_hash_table.put(inputID, "inputKnowledgeItem 1");
+input_hash_table.set(inputID, "inputKnowledgeItem 1");
 
 //input_hash_table.put("try", "inputKnowledgeItem 2");
 

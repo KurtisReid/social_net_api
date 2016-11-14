@@ -15,24 +15,25 @@ NOTE: due to .put not working, hashmap is always empty
 
 */
 
-var HashTable = require('hashtable');// hashtable to orginize states
+var HashMap = require('hashmap');// hashtable to orginize states
+//var hashmap = require('hashmap');
 var fs = require("fs");
 var value = { "inputKnowledgeItemsID": null, "learningStateID": null, "OutputKnowledgeItemsID": null };
-var learning_states_hash_table = new HashTable();
+var learning_states_hash_table = new HashMap();
 module.exports =
 {
   learning_states_hash_table,
 
   make_new_hash_table : function (callback) {
     console.log("learning_states_hashtable.js, make_new_hash_table");
-    var ls_hash_table = new HashTable();
-    ls_hash_table.put('init', value);
+    var ls_hash_table = new HashMap();
+    ls_hash_table.set('init', value);
     callback(null, ls_hash_table);
   },//end of make_new_hash_table
 
   set_learning_states_hash_table : function(key, value) {
     console.log("set_learning_states_hash_table");
-    learning_states_hashtable.put(key, value);
+    learning_states_hashtable.set(key, value);
   },//end of set_learning_states_hash_table
 
   read_from_file : function (callback) {
