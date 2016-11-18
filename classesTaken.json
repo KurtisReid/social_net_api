@@ -1,0 +1,11 @@
+{
+	"Goal": "hello",
+	"classesTaken": [
+		{
+			"CourseNumber": "10051",
+			"CourseShortTitle": "INTRO TO COMPUTER SCIENCE",
+			"CourseCreditMinimumValue": "4",
+      "PreReqCourseNum": null
+		}
+	]
+}
