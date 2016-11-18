@@ -73,6 +73,11 @@ var create_steps = function (steps, callback)
   callback(null, full_classes);//return array of full course discriptions
 }
 
+
+/*
+    Driver function
+
+*/
 check_requirments(mock_progress, obj, mockLFST, function (err, steps) {
   //call create_steps
   steps.sort();
